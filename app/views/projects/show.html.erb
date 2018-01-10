@@ -1,0 +1,27 @@
+<section class="section">
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-9">
+				<h1 class="title is-2"><%= @project.name %></h1>
+				<h2 class="subtitle is-5 has-text-weight-light"><span class="icon is-small has-text-weight-lighter"><i class="fa fa-users"></i>&nbsp; &nbsp;</span> <%= link_to @project.team.name, team_path(@project.team) %></h2>
+				<div class="level">
+					<div class="level-left">
+						<p>Created on
+							<%= verbose_date(@project.created_at) %> by <%= @project.user.name %> / Modified
+							<%= time_ago_in_words(@project.updated_at) %></p>
+					</div>
+					<div class="level-right">
+						<div class="buttons">
+							<%= link_to 'Edit Project', edit_project_path(@project), class:'button' %>
+							<%= link_to 'Delete Project', @project, method: :delete, data: { confirm: 'Are you sure'}, class:'button is-danger is-outlined' %> 
+						</div>
+					</div>
+				</div>
+				<hr />
+				<div class="content">
+					<%= @project.description.html_safe %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

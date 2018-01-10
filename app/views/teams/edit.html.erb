@@ -1,0 +1,21 @@
+<section class="section">
+<%= content_tag :div,
+			id: "team-form",
+			data: {
+				id: @team.id,
+				team: @team.to_json(except: [:id, :created_at, :update_at]),
+				users_attributes: @team.users.to_json(except: [:created_at, :update_at])
+			} do %>
+<div class="columns is-centered">
+	<div class="column is-4">
+		<h1 class="title is-2">Editing Team</h1>
+		<%= render 'form', team: @team %>
+	</div>
+</div>	
+
+<div class="utility-buttons">
+	<%= link_to 'Cancel', @team, class:'button is-gray' %>
+</div>
+<% end %>
+</section>
+

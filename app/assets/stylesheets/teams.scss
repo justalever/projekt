@@ -1,0 +1,53 @@
+// Place all the styles related to the Teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the Teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.utility-buttons {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+/* Team forms */
+.formstatic {
+  position: absolute;
+  left: 50px;
+  @media screen and (max-width: 1450px) {
+    position: static;
+  }
+}
+
+.formfixed {
+  position: absolute;
+  left: 50px;
+  @media screen and (max-width: 1450px) {
+    position: static;
+  }
+}
+.datastatic {
+  position: absolute;
+  right: 50px;
+  padding-left: 1em;
+  width: 500px;
+  @media screen and (max-width: 1450px) {
+    padding: 0;
+    width: 100%;
+    margin: 1em 0;
+  }
+}
+.datafixed  {
+  position: fixed;
+  right: 50px;
+  padding: 40px;
+  box-shadow: 0 5px 10px 0 rgba(black, .2);
+  @media screen and (max-width: 1450px) {
+    position: static;
+    right: 0;
+    margin: 1em 0;
+    width: 100%;
+  }
+
+}

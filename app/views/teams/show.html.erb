@@ -1,0 +1,51 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8">
+        <p>Team Name:</p>
+        <h1 class="title is-2"><%= @team.name %></h1>
+        <hr/>
+        <h2 class="subtitle"> Team Members</h2>
+          <div class="columns">
+          <% @team.users.each do |member|  %>
+            <div class="column is-4">
+              <div class="border-light border-radius-3 pa2">
+              <div class="columns">
+                <div class="column is-3">
+                <%= gravatar_image_tag(member.email.gsub('spam','mdeering'), size:48, alt: member.name, class:'image is-48x48') %>
+                </div>
+                <div class="column is-9">
+                  <h3 class="fw6 f4"><%= member.name %></h3>
+                  <p><%= member.email %></p>
+                  <p class="f6"><%= verbose_date(member.created_at) %></p>
+                </div>
+              </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+      <div class="column is-4 projects-column">
+        <p><%= @team.name %> projects</p>
+        <h3 class="title is-4">Active Projects</h3>
+        <hr/>
+        <% if @team.projects.exists? %>
+          <ul>
+            <% @team.projects.each do |project|  %>
+            <li><%= link_to project.name, project %></li>
+            <% end %>
+          </ul>
+        <% else %>
+        <div class="content">
+          <p>No active projects yet.</p>
+          <p><%= link_to 'Add one', new_project_path %></p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="utility-buttons">
+    <%= link_to 'Edit', edit_team_path(@team), class:'button' %>
+    <%= link_to 'Back', teams_path, class:'button' %>
+    </div>
+  </div>
+</section>

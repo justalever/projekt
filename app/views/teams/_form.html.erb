@@ -1,0 +1,59 @@
+<div class="field">
+	<div class="control">
+		<label class="label">Team Name</label>
+		<input type="text" class="input" v-model="team.name" />
+	</div>
+</div>
+
+<div class="content">
+	<h2 class="title is-4">Invite users</h2>
+	<p>Invite users to create an account and join this team. Each user will be sent a confirmation email in which they can supply their own unique password.</p>
+</div>
+
+<div v-for="(user, index) in team.users_attributes">
+	<div v-if="user._destroy =='1'">
+		{{ user.name }} will be removed.
+		<button v-on:click="undoRemove(index)" class="button is-small">Undo</button>
+	</div>
+	<div v-else>
+		<div class="field">
+			<div class="control">
+				<label class="label">Name</label>
+				<input type="text" class="input" v-model="user.name" />
+			</div>
+		</div>
+
+		<div class="field">
+			<div class="control">
+				<label class="label">Email</label>
+				<input type="text" class="input" v-model="user.email" />
+				<div id="errors" class="has-text-danger" v-if="errors.length">{{ errors }}</div>
+			</div>
+		</div>
+		<input type="hidden" value="<%= current_user.id %>" />
+		<div class="field">
+			<div class="control">
+				<button v-on:click="removeUser(index)" class="button is-small">Remove</button>
+			</div>
+		</div>
+	</div>
+	<hr />
+</div>
+
+<div class="field">
+	<div class="control">
+		<button v-on:click="addUser" class="button is-link">Add User</button>
+	</div>
+</div>
+
+<hr />
+
+<div class="field">
+	<div class="control">
+		<% if current_page?(new_team_path) %>
+			<button v-on:click="saveTeam" class="button is-success is-large">Create Team</button>
+		<% else %>
+			<button v-on:click="saveTeam" class="button is-success is-large">Save Team</button>
+		<% end %>
+	</div>
+</div>
