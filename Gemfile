@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.4.2"
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -42,6 +44,8 @@ gem 'gravatar_image_tag', '~> 1.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem "wysiwyg-rails"
 gem 'public_activity', '~> 1.5'
+gem 'pg'
+gem "figaro"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
